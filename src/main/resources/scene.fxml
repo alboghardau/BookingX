@@ -1,16 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="898.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="898.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.FXMLController">
    <children>
+      <AnchorPane layoutX="189.0" prefHeight="52.0" prefWidth="709.0" style="-fx-background-color: #dcedc8;">
+         <children>
+            <DatePicker layoutX="521.0" layoutY="13.0" />
+            <Label fx:id="labelSelectDate" layoutX="444.0" layoutY="17.0" text="Select Date:" />
+            <MenuButton layoutX="195.0" layoutY="14.0" mnemonicParsing="false" text="MenuButton">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+            </MenuButton>
+         </children>
+      </AnchorPane>
       <AnchorPane prefHeight="609.0" prefWidth="189.0" style="-fx-background-color: #c5e1a5;">
          <children>
             <VBox layoutY="174.0" prefHeight="261.0" prefWidth="189.0">
@@ -66,12 +83,13 @@
                </children>
             </VBox>
          </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <effect>
+            <DropShadow />
+         </effect>
       </AnchorPane>
-      <AnchorPane layoutX="189.0" prefHeight="52.0" prefWidth="709.0" style="-fx-background-color: #dcedc8;">
-         <children>
-            <DatePicker layoutX="521.0" layoutY="13.0" />
-            <Label fx:id="label" layoutX="444.0" layoutY="17.0" text="Select Date:" />
-         </children>
-      </AnchorPane>
+      <BorderPane layoutX="282.0" layoutY="69.0" prefHeight="471.0" prefWidth="523.0" />
    </children>
 </AnchorPane>
