@@ -9,13 +9,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 
 public class FXMLController implements Initializable {
     
     @FXML
     private Label labelSelectDate;
     @FXML
-    private AnchorPane paneMainView;
+    private BorderPane paneMainView;
+
+    @FXML
+    private Button buttonRoomEditor;
     
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
@@ -23,5 +27,11 @@ public class FXMLController implements Initializable {
         String javafxVersion = System.getProperty("javafx.version");
 
 
+    }
+
+    @FXML
+    public void onBtnRoomEditorClick(){
+        RoomManager roomManager = new RoomManager();
+        paneMainView.setCenter(roomManager);
     }
 }
