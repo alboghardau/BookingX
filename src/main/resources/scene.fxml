@@ -70,7 +70,7 @@
       <AnchorPane layoutX="189.0" prefHeight="52.0" prefWidth="709.0" style="-fx-background-color: #dcedc8;">
          <children>
             <DatePicker layoutX="521.0" layoutY="13.0" />
-            <Label layoutX="444.0" layoutY="17.0" text="Select Date:" />
+            <Label fx:id="label" layoutX="444.0" layoutY="17.0" text="Select Date:" />
          </children>
       </AnchorPane>
    </children>
