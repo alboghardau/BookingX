@@ -10,9 +10,9 @@ public class RoomManager extends BorderPane {
 
     public RoomManager(){
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RoomEditor.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../RoomEditor.fxml"));
 
-        fxmlLoader.setRoot(this);
+        //fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
         try{

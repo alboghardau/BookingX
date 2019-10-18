@@ -5,7 +5,9 @@ import java.util.ResourceBundle;
 
 import controllers.SQLiteController;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -31,7 +33,13 @@ public class FXMLController implements Initializable {
 
     @FXML
     public void onBtnRoomEditorClick(){
-        RoomManager roomManager = new RoomManager();
-        paneMainView.setCenter(roomManager);
+        Parent root = null;
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../RoomEditor.fxml"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        paneMainView.setCenter(root);
     }
 }

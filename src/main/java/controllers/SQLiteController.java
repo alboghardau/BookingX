@@ -52,7 +52,6 @@ public class SQLiteController {
 
     //adds booking to the database
     public void addBooking(Booking booking, Guest guest, Room room){
-
         try{
             PreparedStatement statement = connection.prepareStatement("\"INSERT INTO bookings (room_id,guest_id,date_in,date_out,value) VALUES (?,?,?,?,?)");
             statement.setInt(1, room.getId());

@@ -90,6 +90,6 @@
             <DropShadow />
          </effect>
       </AnchorPane>
-      <BorderPane layoutX="282.0" layoutY="69.0" prefHeight="471.0" prefWidth="523.0" />
+      <BorderPane fx:id="paneMainView" layoutX="237.0" layoutY="86.0" prefHeight="471.0" prefWidth="613.0" />
    </children>
 </AnchorPane>
