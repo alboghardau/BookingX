@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 
 public class FXMLController implements Initializable {
     
@@ -19,15 +20,23 @@ public class FXMLController implements Initializable {
     private Label labelSelectDate;
     @FXML
     private BorderPane paneMainView;
-
+    @FXML
+    private Button buttonPlanner;
     @FXML
     private Button buttonRoomEditor;
+    @FXML
+    private Button buttonNextGuests;
+    @FXML
+    private Button buttonAccounting;
     
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
-        String javaVersion = System.getProperty("java.version");
-        String javafxVersion = System.getProperty("javafx.version");
 
+
+    }
+
+    @FXML
+    public void onButtonPlannerClick(){
 
     }
 
@@ -35,11 +44,11 @@ public class FXMLController implements Initializable {
     public void onBtnRoomEditorClick(){
         Parent root = null;
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../RoomEditor.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../RoomEditor.fxml"));
+            root = loader.load();
         }catch (Exception e){
             e.printStackTrace();
         }
-
         paneMainView.setCenter(root);
     }
 }

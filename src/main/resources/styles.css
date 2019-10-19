@@ -1,3 +1,24 @@
 .label {
     -fx-text-fill: blue;
 }
+
+.paneMainLeft{
+    -fx-background-color: #81c784;
+}
+
+.buttonMainPanel{
+    -fx-background-color: #81c784;
+}
+
+.buttonMainPanel:hover{
+    -fx-background-color: #b2fab4;
+    -fx-text-color: #29434e;
+}
+
+.buttonExit{
+    -fx-background-color: transparent;
+}
+
+.buttonExit:hover{
+    -fx-
+}

@@ -2,11 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,68 +9,69 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="898.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.FXMLController">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.FXMLController">
    <children>
-      <AnchorPane layoutX="189.0" prefHeight="52.0" prefWidth="709.0" style="-fx-background-color: #dcedc8;">
+      <AnchorPane layoutX="200.0" prefHeight="40.0" prefWidth="800.0" style="-fx-background-color: #cfd8dc;" stylesheets="@styles.css">
          <children>
-            <DatePicker layoutX="521.0" layoutY="13.0" />
-            <Label fx:id="labelSelectDate" layoutX="444.0" layoutY="17.0" text="Select Date:" />
-            <MenuButton layoutX="195.0" layoutY="14.0" mnemonicParsing="false" text="MenuButton">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-              </items>
-            </MenuButton>
+            <Button layoutX="738.0" layoutY="1.0" mnemonicParsing="false" styleClass="buttonExit">
+               <graphic>
+                  <ImageView>
+                     <image>
+                        <Image url="@icons/icons8_shutdown_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="609.0" prefWidth="189.0" style="-fx-background-color: #c5e1a5;">
+      <AnchorPane prefHeight="600.0" prefWidth="200.0" styleClass="paneMainLeft" stylesheets="@styles.css">
          <children>
-            <VBox layoutY="174.0" prefHeight="261.0" prefWidth="189.0">
+            <VBox layoutY="174.0" prefHeight="261.0" prefWidth="200.0">
                <children>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="189.0" style="-fx-background-color: #c5e1a5;" text="Planner" textFill="WHITE">
+                  <Button fx:id="buttonPlanner" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#onButtonPlannerClick" prefWidth="200.0" styleClass="buttonMainPanel" text="Planner" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                      <graphic>
                         <ImageView>
                            <image>
-                              <Image url="@../../../../../AppData/Local/Temp/icons8_calendar_48px_2.png" />
+                              <Image url="@icons/icons8_calendar_32px.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="buttonRoomEditor" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onBtnRoomEditorClick" prefHeight="60.0" prefWidth="207.0" style="-fx-background-color: #c5e1a5;" text="Room Editor" textFill="WHITE">
+                  <Button fx:id="buttonRoomEditor" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onBtnRoomEditorClick" prefWidth="207.0" styleClass="buttonMainPanel" text="Room Editor" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                      <graphic>
                         <ImageView>
                            <image>
-                              <Image url="@../../../../../AppData/Local/Temp/icons8_bed_48px.png" />
+                              <Image url="@icons/icons8_double_bed_32px.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button alignment="TOP_LEFT" layoutX="10.0" layoutY="70.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="207.0" style="-fx-background-color: #c5e1a5;" text="Next Guests" textFill="WHITE">
+                  <Button fx:id="buttonNextGuest" alignment="TOP_LEFT" layoutX="10.0" layoutY="70.0" mnemonicParsing="false" prefWidth="207.0" styleClass="buttonMainPanel" text="Next Guests" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                      <graphic>
                         <ImageView>
                            <image>
-                              <Image url="@../../../../../AppData/Local/Temp/icons8_booking_48px.png" />
+                              <Image url="@icons/icons8_family_32px.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button alignment="TOP_LEFT" layoutX="10.0" layoutY="130.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="207.0" style="-fx-background-color: #c5e1a5;" text="Accounting" textFill="WHITE">
+                  <Button fx:id="buttonAccounting" alignment="TOP_LEFT" layoutX="10.0" layoutY="130.0" mnemonicParsing="false" prefWidth="207.0" styleClass="buttonMainPanel" text="Accounting" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                      <graphic>
                         <ImageView>
                            <image>
-                              <Image url="@../../../../../AppData/Local/Temp/icons8_average_2_48px.png" />
+                              <Image url="@icons/icons8_coins_32px.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -86,10 +82,7 @@
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
-         <effect>
-            <DropShadow />
-         </effect>
       </AnchorPane>
-      <BorderPane fx:id="paneMainView" layoutX="237.0" layoutY="86.0" prefHeight="471.0" prefWidth="613.0" />
+      <BorderPane fx:id="paneMainView" layoutX="200.0" layoutY="50.0" prefHeight="550.0" prefWidth="800.0" />
    </children>
 </AnchorPane>
