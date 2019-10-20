@@ -12,7 +12,8 @@
 
 .buttonMainPanel:hover{
     -fx-background-color: #b2fab4;
-    -fx-text-color: #29434e;
+    -fx-text-fill: #78909c
+;
 }
 
 .buttonExit{
@@ -20,5 +21,5 @@
 }
 
 .buttonExit:hover{
-    -fx-
+    -fx-background-color: white;
 }

@@ -32,7 +32,18 @@ public class FXMLController implements Initializable {
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
 
+    }
 
+    //function to set the inner pane without copying the code
+    private void setInnerPane(String url){
+        Parent root = null;
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
+            root = loader.load();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        paneMainView.setCenter(root);
     }
 
     @FXML
@@ -42,13 +53,11 @@ public class FXMLController implements Initializable {
 
     @FXML
     public void onBtnRoomEditorClick(){
-        Parent root = null;
-        try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../RoomEditor.fxml"));
-            root = loader.load();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        paneMainView.setCenter(root);
+        setInnerPane("../RoomEditor.fxml");
+    }
+
+    @FXML
+    public void onButtonExitClick(){
+        System.exit(0);
     }
 }

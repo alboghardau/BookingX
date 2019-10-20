@@ -13,7 +13,7 @@
    <children>
       <AnchorPane layoutX="200.0" prefHeight="40.0" prefWidth="800.0" style="-fx-background-color: #cfd8dc;" stylesheets="@styles.css">
          <children>
-            <Button layoutX="738.0" layoutY="1.0" mnemonicParsing="false" styleClass="buttonExit">
+            <Button fx:id="buttonExit" layoutX="738.0" layoutY="1.0" mnemonicParsing="false" onAction="#onButtonExitClick" styleClass="buttonExit">
                <graphic>
                   <ImageView>
                      <image>
@@ -83,6 +83,6 @@
             <Insets />
          </opaqueInsets>
       </AnchorPane>
-      <BorderPane fx:id="paneMainView" layoutX="200.0" layoutY="50.0" prefHeight="550.0" prefWidth="800.0" />
+      <BorderPane fx:id="paneMainView" layoutX="200.0" layoutY="41.0" prefHeight="560.0" prefWidth="800.0" />
    </children>
 </AnchorPane>
