@@ -1,5 +1,7 @@
 package views;
 
+import controllers.SQLiteController;
+import helpers.WindowMove;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -29,6 +31,7 @@ public class RoomManagerFXMLController implements Initializable {
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
 
+        SQLiteController.getInstance().listRooms();
     }
 
     @FXML
@@ -43,7 +46,7 @@ public class RoomManagerFXMLController implements Initializable {
             dialog.initOwner(parentWindow);
             dialog.initModality(Modality.APPLICATION_MODAL);
             dialog.show();
-
+            WindowMove.setMovableWindow(root,dialog);
 
         } catch (IOException e) {
             e.printStackTrace();
