@@ -31,7 +31,7 @@ public class FXMLController implements Initializable {
     
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
-
+        onBtnRoomEditorClick();
     }
 
     //function to set the inner pane without copying the code

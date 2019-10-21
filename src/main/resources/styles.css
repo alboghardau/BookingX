@@ -6,6 +6,10 @@
     -fx-background-color: #1565c0;
 }
 
+.modalBackground{
+    -fx-background-color: #cfd8dc;
+}
+
 .buttonMainPanel{
     -fx-background-color: #1565c0;
 }
@@ -35,7 +39,11 @@
 .topInnerLabel{
     -fx-text-fill: #ffffff;
     -fx-font-size: 20;
+}
 
+.topInnerLabelBlack{
+    -fx-text-fill: #000000;
+    -fx-font-size: 20;
 }
 
 .buttonsInnerPanel{
@@ -43,5 +51,10 @@
 }
 
 .buttonInnerTop{
+    -fx-background-color: transparent;
+    -fx-font-size: 15;
+}
 
+.buttonInnerTop:hover{
+    -fx-background-color: white;
 }

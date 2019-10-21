@@ -2,9 +2,11 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.RoomManagerFXMLController">
    <children>
       <AnchorPane prefHeight="60.0" prefWidth="800.0" styleClass="topInnerBar">
          <children>
@@ -13,7 +15,15 @@
       </AnchorPane>
       <AnchorPane layoutY="60.0" prefHeight="60.0" prefWidth="800.0" styleClass="buttonsInnerPanel">
          <children>
-            <Button layoutX="14.0" layoutY="18.0" mnemonicParsing="false" text="Add Room" />
+            <Button fx:id="buttonAddRoom" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#onButtonAddRoomClick" styleClass="buttonInnerTop" text="Add Room">
+               <graphic>
+                  <ImageView>
+                     <image>
+                        <Image url="@icons/icons8_plus_math_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
    </children>
