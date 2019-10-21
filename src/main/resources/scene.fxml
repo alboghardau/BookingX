@@ -11,7 +11,7 @@
 
 <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.FXMLController">
    <children>
-      <AnchorPane layoutX="200.0" prefHeight="40.0" prefWidth="800.0" style="-fx-background-color: #cfd8dc;" stylesheets="@styles.css">
+      <AnchorPane layoutX="200.0" prefHeight="40.0" prefWidth="800.0" stylesheets="@styles.css">
          <children>
             <Button fx:id="buttonExit" layoutX="738.0" layoutY="1.0" mnemonicParsing="false" onAction="#onButtonExitClick" styleClass="buttonExit">
                <graphic>

@@ -3,17 +3,20 @@
 }
 
 .paneMainLeft{
-    -fx-background-color: #81c784;
+    -fx-background-color: #1565c0;
 }
 
 .buttonMainPanel{
-    -fx-background-color: #81c784;
+    -fx-background-color: #1565c0;
 }
 
 .buttonMainPanel:hover{
-    -fx-background-color: #b2fab4;
-    -fx-text-fill: #78909c
-;
+    -fx-background-color: #42a5f5;
+    -fx-text-fill: #000000;
+}
+
+.buttonMainPanel:focused{
+     -fx-background-color: #42a5f5;
 }
 
 .buttonExit{
@@ -22,4 +25,23 @@
 
 .buttonExit:hover{
     -fx-background-color: white;
+}
+
+.topInnerBar{
+    -fx-background-color: #42a5f5;
+
+}
+
+.topInnerLabel{
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 20;
+
+}
+
+.buttonsInnerPanel{
+    -fx-background-color: #6ec6ff;
+}
+
+.buttonInnerTop{
+
 }
