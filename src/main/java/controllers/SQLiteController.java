@@ -19,7 +19,7 @@ public class SQLiteController {
     private SQLiteController(){
         try{
             Class.forName("org.sqlite.JDBC");
-            this.connection = DriverManager.getConnection("jdbc:../../resources/sqlite:Bookings.db");
+            this.connection = DriverManager.getConnection("jdbc:sqlite:src/main/resources/Bookings.db");
             System.out.println("Conencted to database!");
 
             roomsDAO = new RoomsDAO(connection);
