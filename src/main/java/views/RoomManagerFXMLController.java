@@ -19,7 +19,6 @@ import javafx.stage.StageStyle;
 import javafx.stage.Window;
 import models.Room;
 
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -58,11 +57,8 @@ public class RoomManagerFXMLController implements Initializable {
         }
     }
 
-    private void refreshRoomList(){
+    public void refreshRoomList(){
         roomsVBox.getChildren().removeAll();
-
-
-
         list.forEach((e) -> {
             HBox box = WindowEditorHelper.createHBox();
             Label roomName = WindowEditorHelper.createLabel(e.getName());
@@ -73,7 +69,6 @@ public class RoomManagerFXMLController implements Initializable {
             box.getChildren().add(roomName);
             box.getChildren().add(buttonDelete);
             box.getChildren().add(buttonEdit);
-
         });
     }
 }

@@ -6,12 +6,14 @@ public class Guest {
     private String name;
     private String familyName;
     private String telephone;
+    private String email;
 
-    public Guest(int id, String name, String familyName, String telephone) {
+    public Guest(int id, String name, String familyName, String telephone, String email) {
         this.id = id;
         this.name = name;
         this.familyName = familyName;
         this.telephone = telephone;
+        this.email = email;
     }
 
     public String getTelephone() {
@@ -44,5 +46,13 @@ public class Guest {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

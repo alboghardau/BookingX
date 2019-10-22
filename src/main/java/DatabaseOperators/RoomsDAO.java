@@ -49,4 +49,17 @@ public class RoomsDAO {
             e.printStackTrace();
         }
     }
+
+    //edit room into the table
+    public void editRoom(Room newRoom){
+        try{
+            PreparedStatement statement = connection.prepareStatement("UPDATE rooms SET name = ? WHERE id = ?");
+            statement.setString(1,newRoom.getName());
+            statement.setInt(2,newRoom.getId());
+            statement.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+            Logger.getGlobal().log(Level.INFO, "Failed to edit room "+newRoom.getId());
+        }
+    }
 }
