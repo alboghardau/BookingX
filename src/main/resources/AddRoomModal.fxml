@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane styleClass="modalBackground" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXMLControllers.AddRoomModalController">
    <children>
       <VBox alignment="CENTER">
@@ -23,7 +22,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField prefHeight="31.0" prefWidth="150.0">
+                  <TextField fx:id="textRoomName" prefHeight="31.0" prefWidth="150.0">
                      <font>
                         <Font size="15.0" />
                      </font>

@@ -41,4 +41,9 @@ public class SQLiteController {
     public List<Room> listRooms(){
         return roomsDAO.listRooms();
     }
+
+    //add new room to table
+    public void addRoom(Room room) {
+        roomsDAO.addRoom(room);
+    }
 }

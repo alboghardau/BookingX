@@ -1,15 +1,20 @@
+/*
+TESTED - OK
+*/
+
 package FXMLControllers;
 
+import controllers.SQLiteController;
+import helpers.WindowHelper;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.GaussianBlur;
-import javafx.stage.Stage;
+import models.Room;
 import views.MainApp;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -18,6 +23,7 @@ public class AddRoomModalController implements Initializable {
     @FXML
     public Button addRoomModalCancel;
     public Button addRoomModalAdd;
+    public TextField textRoomName;
 
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
@@ -26,23 +32,19 @@ public class AddRoomModalController implements Initializable {
         addRoomModalCancel.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Node source = (Node) event.getSource();
-                Stage stage = (Stage) source.getScene().getWindow();
-                stage.close();
-                MainApp.getParent().setEffect(null);
+                WindowHelper.closeModal(event);
             }
         });
 
         addRoomModalAdd.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
+                if(!textRoomName.getText().equals("")){
+                    Room room = new Room(1, textRoomName.getText());
+                    SQLiteController.getInstance().addRoom(room);
+                    WindowHelper.closeModal(event);
+                }
             }
         });
     }
-
-    private void addRoom(){
-
-    }
-
 }

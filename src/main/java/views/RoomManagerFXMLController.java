@@ -1,7 +1,8 @@
 package views;
 
 import controllers.SQLiteController;
-import helpers.WindowMove;
+import helpers.WindowEditorHelper;
+import helpers.WindowHelper;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -9,29 +10,33 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
-import javafx.scene.effect.GaussianBlur;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Window;
+import models.Room;
 
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class RoomManagerFXMLController implements Initializable {
 
     @FXML
-    private Button buttonAddRoom;
+    public Button buttonAddRoom;
+    public VBox roomsVBox;
+
+    private List<Room> list;
 
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
-
-        SQLiteController.getInstance().listRooms();
+        list = SQLiteController.getInstance().listRooms();
+        refreshRoomList();
     }
 
     @FXML
@@ -46,13 +51,30 @@ public class RoomManagerFXMLController implements Initializable {
             dialog.initOwner(parentWindow);
             dialog.initModality(Modality.APPLICATION_MODAL);
             dialog.show();
-            WindowMove.setMovableWindow(root,dialog);
+            WindowHelper.setMovableWindow(root,dialog);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void refreshRoomList(){
+        roomsVBox.getChildren().removeAll();
 
 
 
+        list.forEach((e) -> {
+            HBox box = WindowEditorHelper.createHBox();
+            Label roomName = WindowEditorHelper.createLabel(e.getName());
+            Button buttonDelete = WindowEditorHelper.createButton("Delete");
+            Button buttonEdit = WindowEditorHelper.createButton("Edit");
+
+            roomsVBox.getChildren().add(box);
+            box.getChildren().add(roomName);
+            box.getChildren().add(buttonDelete);
+            box.getChildren().add(buttonEdit);
+
+        });
     }
 }
+

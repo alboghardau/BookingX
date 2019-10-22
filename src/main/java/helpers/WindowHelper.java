@@ -1,11 +1,14 @@
 package helpers;
 
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import views.MainApp;
 
-public class WindowMove {
+public class WindowHelper {
     private static double xOffset = 0;
     private static double yOffset = 0;
 
@@ -25,5 +28,12 @@ public class WindowMove {
                 stage.setY(event.getScreenY() + yOffset);
             }
         });
+    }
+
+    public static void closeModal(ActionEvent event){
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+        MainApp.getParent().setEffect(null);
     }
 }

@@ -30,11 +30,23 @@ public class RoomsDAO {
                 Room r = new Room(set.getInt("id"),set.getString("name"));
                 list.add(r);
             }
-            Logger.getLogger("test").log(Level.INFO,"RoomsDAO - Rooms list aquired");
+            Logger.getLogger("test").log(Level.INFO,"List of rooms aquired");
             return list;
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return Collections.emptyList();
+    }
+
+    //add room the the table
+    public void addRoom(Room room){
+        try{
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO rooms (name) VALUES (?)");
+            statement.setString(1, room.getName());
+            statement.executeUpdate();
+            Logger.getLogger("test").log(Level.INFO,"Inserted room: "+room.getName());
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 }

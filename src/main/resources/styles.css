@@ -1,7 +1,3 @@
-.label {
-    -fx-text-fill: blue;
-}
-
 .paneMainLeft{
     -fx-background-color: #1565c0;
 }
@@ -57,4 +53,36 @@
 
 .buttonInnerTop:hover{
     -fx-background-color: white;
+}
+
+.buttonInnerDelete{
+    -fx-background-color:   #d32f2f;
+    -fx-font-size: 15;
+    -fx-text-fill: #ffffff;
+}
+
+.buttonInnerDelete:hover{
+    -fx-background-color: #ff6659;
+    -fx-text-fill: #000000;
+}
+
+.buttonInnerEdit{
+    -fx-background-color:   #ffa000;
+    -fx-font-size: 15;
+    -fx-text-fill: #ffffff;
+}
+
+.buttonInnerEdit:hover{
+    -fx-background-color: #ffd149;
+    -fx-text-fill: #000000;
+}
+
+.labelInner{
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 15;
+}
+
+.labelInnerBlack{
+    -fx-text-fill: #000000;
+    -fx-font-size: 15;
 }

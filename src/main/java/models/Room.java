@@ -3,11 +3,11 @@ package models;
 public class Room {
 
     private int id;
-    private String nume;
+    private String name;
 
-    public Room(int id, String nume) {
+    public Room(int id, String name) {
         this.id = id;
-        this.nume = nume;
+        this.name = name;
     }
 
     public int getId() {
@@ -18,11 +18,11 @@ public class Room {
         this.id = id;
     }
 
-    public String getNume() {
-        return nume;
+    public String getName() {
+        return name;
     }
 
-    public void setNume(String nume) {
-        this.nume = nume;
+    public void setName(String nume) {
+        this.name = name;
     }
 }
