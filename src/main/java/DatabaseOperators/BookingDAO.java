@@ -6,7 +6,12 @@ import models.Room;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,6 +21,31 @@ public class BookingDAO {
 
     public BookingDAO(Connection connection){
         this.connection = connection;
+    }
+
+    public List<Booking> listBookings(List<Room> roomList, List<Guest> guestList){
+        List<Booking> list = new ArrayList<>();
+        try{
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM bookings");
+            ResultSet set = statement.executeQuery();
+            while(set.next()){
+                int guestId = set.getInt("guest_id");
+                int roomId = set.getInt("room_id");
+                Booking b = new Booking(
+                        guestList.stream().filter(guest -> guest.getId() == guestId).findFirst().orElse(new Guest(0,null,null,null,null)),
+                        roomList.stream().filter(room -> room.getId() == roomId).findFirst().orElse(new Room(0,null)),
+                        set.getInt("persons"),
+                        LocalDate.parse(set.getString("date_in")),
+                        LocalDate.parse(set.getString("date_out")),
+                        set.getDouble("value")
+                );
+                list.add(b);
+            }
+            return list;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return Collections.emptyList();
     }
 
     public void addBooking(Booking booking, Guest guest, Room room){

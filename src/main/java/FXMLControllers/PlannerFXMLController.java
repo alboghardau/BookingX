@@ -3,6 +3,8 @@ package FXMLControllers;
 import controllers.SQLiteController;
 import controllers.TimeController;
 import helpers.WindowEditorHelper;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -13,6 +15,7 @@ import models.Room;
 
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -39,7 +42,12 @@ public class PlannerFXMLController implements Initializable {
             for(int i = 1; i <= daysThisMonth; i++){
                 Button labelDay = WindowEditorHelper.createLabelDay(i+"");
                 h.getChildren().add(labelDay);
+                labelDay.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
 
+                    }
+                });
             }
         });
     }

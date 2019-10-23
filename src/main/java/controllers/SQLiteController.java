@@ -1,5 +1,7 @@
 package controllers;
 
+import DatabaseOperators.BookingDAO;
+import DatabaseOperators.GuestDAO;
 import DatabaseOperators.RoomsDAO;
 import models.Booking;
 import models.Guest;
@@ -15,6 +17,8 @@ public class SQLiteController {
 
     private Connection connection;
     private RoomsDAO roomsDAO;
+    private GuestDAO guestDAO;
+    private BookingDAO bookingDAO;
 
     private SQLiteController(){
         try{
@@ -23,6 +27,8 @@ public class SQLiteController {
             System.out.println("Conencted to database!");
 
             roomsDAO = new RoomsDAO(connection);
+            guestDAO = new GuestDAO(connection);
+            bookingDAO = new BookingDAO(connection);
         }catch(Exception e){
             e.printStackTrace();
             System.out.println("Failed to connect to database!");
@@ -45,5 +51,10 @@ public class SQLiteController {
     //add new room to table
     public void addRoom(Room room) {
         roomsDAO.addRoom(room);
+    }
+
+    //list all booking records
+    public List<Booking> listBookingRecords(){
+        return bookingDAO.listBookings(roomsDAO.listRooms(), guestDAO.listAll());
     }
 }
