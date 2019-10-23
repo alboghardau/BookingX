@@ -67,4 +67,16 @@ public class Booking {
     public void setRoom(Room room) {
         this.room = room;
     }
+
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "guest=" + guest.getId() +
+                ", room=" + room.getId() +
+                ", persons=" + persons +
+                ", checkIn=" + checkIn +
+                ", checkOut=" + checkOut +
+                ", price=" + price +
+                '}';
+    }
 }

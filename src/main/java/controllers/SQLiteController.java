@@ -57,4 +57,9 @@ public class SQLiteController {
     public List<Booking> listBookingRecords(){
         return bookingDAO.listBookings(roomsDAO.listRooms(), guestDAO.listAll());
     }
+
+    //list bookings in a month
+    public List<Booking> listBookingMonth(){
+        return bookingDAO.monthlyBooking(roomsDAO.listRooms(),guestDAO.listAll(),TimeController.getInstance().getAppDate());
+    }
 }

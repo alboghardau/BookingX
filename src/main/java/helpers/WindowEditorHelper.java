@@ -50,13 +50,14 @@ public class WindowEditorHelper {
         return label;
     }
 
-    public static Button createLabelDay(String text){
-        Button label = new Button();
-        label.getStyleClass().add("labelDay");
-        label.setText(text);
-        label.setAlignment(Pos.CENTER);
-        label.setMinWidth(30);
+    public static Button createButtonDay(String text){
+        Button button = new Button();
+        button.getStyleClass().add("labelDay");
+        button.setText(text);
+        button.setAlignment(Pos.CENTER);
+        button.setMinWidth(30);
+
         //label.setMinHeight(24);
-        return label;
+        return button;
     }
 }

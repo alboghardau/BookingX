@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import models.Booking;
 import models.Room;
 
 
@@ -30,7 +31,11 @@ public class PlannerFXMLController implements Initializable {
     }
 
     private void refreshList(){
+        int daysThisMonth = TimeController.getInstance().getAppDate().lengthOfMonth();
+
         List<Room> roomsList = SQLiteController.getInstance().listRooms();
+        List<Booking> bookingList = SQLiteController.getInstance().listBookingMonth();
+
 
         roomsList.stream().forEach(element ->{
             HBox h = WindowEditorHelper.createHBox(0);
@@ -38,14 +43,14 @@ public class PlannerFXMLController implements Initializable {
             Label label = WindowEditorHelper.createLabel(element.getName());
             h.getChildren().add(label);
 
-            int daysThisMonth = TimeController.getInstance().getAppDate().lengthOfMonth();
             for(int i = 1; i <= daysThisMonth; i++){
-                Button labelDay = WindowEditorHelper.createLabelDay(i+"");
-                h.getChildren().add(labelDay);
-                labelDay.setOnAction(new EventHandler<ActionEvent>() {
+                final int day = i;
+                Button buttonDay = WindowEditorHelper.createButtonDay(i+"");
+                h.getChildren().add(buttonDay);
+                buttonDay.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-
+                        TimeController.getInstance().setDate(LocalDate.of(TimeController.getInstance().getAppDate().getYear(),TimeController.getInstance().getAppDate().getMonth(),day),element);
                     }
                 });
             }

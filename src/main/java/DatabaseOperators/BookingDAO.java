@@ -48,6 +48,39 @@ public class BookingDAO {
         return Collections.emptyList();
     }
 
+    public List<Booking> monthlyBooking(List<Room> roomList, List<Guest> guestList, LocalDate date){
+        List<Booking> list = new ArrayList<>();
+        LocalDate lastDay = LocalDate.of(date.getYear(),date.getMonth(),date.lengthOfMonth());
+        LocalDate firsDay = LocalDate.of(date.getYear(),date.getMonth(),1);
+        try{
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM bookings WHERE date_in <= ? OR date_out >= ?");
+            statement.setString(1, lastDay.toString());
+            statement.setString(2, firsDay.toString());
+            System.out.println(statement);
+            System.out.println(firsDay);
+            System.out.println(lastDay);
+            ResultSet set = statement.executeQuery();
+            while (set.next()){
+                int guestId = set.getInt("guest_id");
+                int roomId = set.getInt("room_id");
+                Booking b = new Booking(
+                        guestList.stream().filter(guest -> guest.getId() == guestId).findFirst().orElse(new Guest(0,null,null,null,null)),
+                        roomList.stream().filter(room -> room.getId() == roomId).findFirst().orElse(new Room(0,null)),
+                        set.getInt("persons"),
+                        LocalDate.parse(set.getString("date_in")),
+                        LocalDate.parse(set.getString("date_out")),
+                        set.getDouble("value")
+                );
+                System.out.println(b);
+                list.add(b);
+            }
+            return list;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return Collections.emptyList();
+    }
+
     public void addBooking(Booking booking, Guest guest, Room room){
         try{
             PreparedStatement statement = connection.prepareStatement("INSERT INTO bookings (room_id, guest_id, date_in, date_out, value) ");
