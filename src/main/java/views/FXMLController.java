@@ -4,11 +4,15 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import controllers.SQLiteController;
+import controllers.TimeController;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -28,10 +32,13 @@ public class FXMLController implements Initializable {
     private Button buttonNextGuests;
     @FXML
     private Button buttonAccounting;
+    @FXML
+    private DatePicker dateSelector;
     
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
-        onBtnRoomEditorClick();
+        onButtonPlannerClick();
+        dateSelectorInitialize();
     }
 
     //function to set the inner pane without copying the code
@@ -46,9 +53,19 @@ public class FXMLController implements Initializable {
         paneMainView.setCenter(root);
     }
 
+    private void dateSelectorInitialize(){
+        dateSelector.setValue(TimeController.getInstance().getAppDate());
+        dateSelector.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                TimeController.getInstance().setAppDate(dateSelector.getValue());
+            }
+        });
+    }
+
     @FXML
     public void onButtonPlannerClick(){
-
+        setInnerPane("../Planner.fxml");
     }
 
     @FXML

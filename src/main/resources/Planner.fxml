@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Planner"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="560.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXMLControllers.PlannerFXMLController">
+   <children>
+      <AnchorPane prefHeight="60.0" prefWidth="800.0" styleClass="topInnerBar">
+         <children>
+            <Label layoutX="719.0" layoutY="15.0" styleClass="topInnerLabel" text="Planner" />
+         </children>
+      </AnchorPane>
+      <ScrollPane layoutY="60.0" prefHeight="500.0" prefWidth="800.0">
+         <content>
+            <VBox fx:id="paneMain" prefHeight="498.0" prefWidth="798.0" spacing="5.0">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
 </AnchorPane>

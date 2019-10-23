@@ -16,11 +16,11 @@ import java.awt.image.BufferedImage;
 
 public class WindowEditorHelper {
 
-    public static HBox createHBox(){
+    public static HBox createHBox(int spacing){
         HBox h = new HBox();
         h.setAlignment(Pos.CENTER);
         h.setPrefWidth(770);            //temporary fix for center of controlls
-        h.setSpacing(5);
+        h.setSpacing(spacing);
         return h;
     }
 
@@ -46,7 +46,17 @@ public class WindowEditorHelper {
         Label label = new Label();
         label.getStyleClass().add("labelInnerBlack");
         label.setText(text);
-        label.setMinWidth(150);
+        label.setMinWidth(100);
+        return label;
+    }
+
+    public static Button createLabelDay(String text){
+        Button label = new Button();
+        label.getStyleClass().add("labelDay");
+        label.setText(text);
+        label.setAlignment(Pos.CENTER);
+        label.setMinWidth(30);
+        //label.setMinHeight(24);
         return label;
     }
 }

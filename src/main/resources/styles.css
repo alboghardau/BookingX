@@ -86,3 +86,11 @@
     -fx-text-fill: #000000;
     -fx-font-size: 15;
 }
+
+.labelDay{
+    -fx-background-color: #ffffff;
+}
+
+.labelDay:hover{
+    -fx-background-color: #ffcc80;
+}

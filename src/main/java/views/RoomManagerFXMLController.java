@@ -60,7 +60,7 @@ public class RoomManagerFXMLController implements Initializable {
     public void refreshRoomList(){
         roomsVBox.getChildren().removeAll();
         list.forEach((e) -> {
-            HBox box = WindowEditorHelper.createHBox();
+            HBox box = WindowEditorHelper.createHBox(5);
             Label roomName = WindowEditorHelper.createLabel(e.getName());
             Button buttonDelete = WindowEditorHelper.createButton("Delete");
             Button buttonEdit = WindowEditorHelper.createButton("Edit");
