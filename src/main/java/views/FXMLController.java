@@ -32,13 +32,11 @@ public class FXMLController implements Initializable {
     private Button buttonNextGuests;
     @FXML
     private Button buttonAccounting;
-    @FXML
-    private DatePicker dateSelector;
-    
+
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
         onButtonPlannerClick();
-        dateSelectorInitialize();
+
     }
 
     //function to set the inner pane without copying the code
@@ -53,15 +51,7 @@ public class FXMLController implements Initializable {
         paneMainView.setCenter(root);
     }
 
-    private void dateSelectorInitialize(){
-        dateSelector.setValue(TimeController.getInstance().getAppDate());
-        dateSelector.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                TimeController.getInstance().setAppDate(dateSelector.getValue());
-            }
-        });
-    }
+
 
     @FXML
     public void onButtonPlannerClick(){

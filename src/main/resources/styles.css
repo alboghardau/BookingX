@@ -48,11 +48,12 @@
 
 .buttonInnerTop{
     -fx-background-color: transparent;
+    -fx-text-fill: #ffffff;
     -fx-font-size: 15;
 }
 
 .buttonInnerTop:hover{
-    -fx-background-color: white;
+    -fx-background-color: #007ac1;
 }
 
 .buttonInnerDelete{
@@ -87,10 +88,29 @@
     -fx-font-size: 15;
 }
 
-.labelDay{
+.buttonDay{
     -fx-background-color: #ffffff;
+    -fx-font-size: 8;
 }
 
-.labelDay:hover{
+.buttonDay:hover{
     -fx-background-color: #ffcc80;
 }
+
+.buttonChecked{
+     -fx-background-color: #ffca28;
+     -fx-font-size: 8;
+ }
+
+ .buttonChecked:hover{
+     -fx-background-color: #ffe082;
+ }
+
+.buttonBooked{
+     -fx-background-color: #8bc34a;
+     -fx-font-size: 8;
+ }
+
+ .buttonBooked:hover{
+     -fx-background-color: #bef67a;
+ }

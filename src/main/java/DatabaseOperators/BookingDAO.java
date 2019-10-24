@@ -48,12 +48,13 @@ public class BookingDAO {
         return Collections.emptyList();
     }
 
+    //retrieves only the bookings records in a month - use (?) in the SQL statement
     public List<Booking> monthlyBooking(List<Room> roomList, List<Guest> guestList, LocalDate date){
         List<Booking> list = new ArrayList<>();
         LocalDate lastDay = LocalDate.of(date.getYear(),date.getMonth(),date.lengthOfMonth());
         LocalDate firsDay = LocalDate.of(date.getYear(),date.getMonth(),1);
         try{
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM bookings WHERE date_in <= ? OR date_out >= ?");
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM bookings WHERE date_in <= (?) AND date_out >= (?)");
             statement.setString(1, lastDay.toString());
             statement.setString(2, firsDay.toString());
             System.out.println(statement);

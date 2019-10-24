@@ -62,18 +62,33 @@ public class TimeController {
     }
 
     public void setDate(LocalDate date, Room room){
-        if(checkInSelector == null && room == null){
+        if(checkInSelector == null && selectedRoom == null){
             setCheckInSelector(date);
-            setSelectedRoom(room);
-        }else if(checkInSelector!= null && date.isEqual(checkInSelector)){
-            setCheckInSelector(null);
-            setSelectedRoom(null);
-        }else if(checkInSelector != null && date.isAfter(checkInSelector) && room.getId() == selectedRoom.getId()){
             setCheckOutSelector(date);
-        }else if(checkInSelector != null && checkOutSelector != null){
+            setSelectedRoom(room);
+        }else if(room.getId() != selectedRoom.getId()){
+            setCheckInSelector(date);
+            setCheckOutSelector(date);
+            setSelectedRoom(room);
+        }else if(date.isAfter(checkInSelector)){
+            setCheckOutSelector(date);
+        }else if(date.isBefore(checkInSelector)){
+            setCheckInSelector(date);
+            setCheckOutSelector(date);
+        }else{
             setCheckInSelector(null);
             setCheckOutSelector(null);
             setSelectedRoom(null);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "TimeController{" +
+                "appDate=" + appDate +
+                ", checkInSelector=" + checkInSelector +
+                ", checkOutSelector=" + checkOutSelector +
+                ", selectedRoom=" + selectedRoom +
+                '}';
     }
 }

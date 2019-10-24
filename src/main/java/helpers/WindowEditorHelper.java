@@ -52,10 +52,33 @@ public class WindowEditorHelper {
 
     public static Button createButtonDay(String text){
         Button button = new Button();
-        button.getStyleClass().add("labelDay");
+        button.getStyleClass().add("buttonDay");
         button.setText(text);
         button.setAlignment(Pos.CENTER);
-        button.setMinWidth(30);
+        button.setMinWidth(Integer.valueOf(690/31));
+
+
+        //label.setMinHeight(24);
+        return button;
+    }
+
+    public static Button createButtonBooked(String text){
+        Button button = new Button();
+        button.getStyleClass().add("buttonBooked");
+        button.setText(text);
+        button.setAlignment(Pos.CENTER);
+        button.setMinWidth(Integer.valueOf(690/31));
+
+        //label.setMinHeight(24);
+        return button;
+    }
+
+    public static Button createButtonCecked(String text){
+        Button button = new Button();
+        button.getStyleClass().add("buttonChecked");
+        button.setText(text);
+        button.setAlignment(Pos.CENTER);
+        button.setMinWidth(Integer.valueOf(690/31));
 
         //label.setMinHeight(24);
         return button;
