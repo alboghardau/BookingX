@@ -19,12 +19,12 @@ public class MainApp extends Application {
         setPrimaryStage(stage);
         Parent root = FXMLLoader.load(getClass().getResource("/scene.fxml"));
         setParent(root);
-        stage.initStyle(StageStyle.UNDECORATED);
+
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-
+        //stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("BookingX");
-        stage.setResizable(false);
+        //stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
 

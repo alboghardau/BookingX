@@ -114,11 +114,13 @@ public class PlannerFXMLController implements Initializable {
     @FXML
     public void onButtonNext(){
         TimeController.getInstance().setAppDate(TimeController.getInstance().getAppDate().plusMonths(1));
+        dateSelector.setValue(TimeController.getInstance().getAppDate());
         refreshList();
     }
 
     @FXML void onButtonPrevious(){
         TimeController.getInstance().setAppDate(TimeController.getInstance().getAppDate().minusMonths(1));
+        dateSelector.setValue(TimeController.getInstance().getAppDate());
         refreshList();
     }
 

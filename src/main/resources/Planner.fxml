@@ -13,9 +13,9 @@
 
 <AnchorPane prefHeight="560.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXMLControllers.PlannerFXMLController">
    <children>
-      <AnchorPane prefHeight="60.0" prefWidth="800.0" styleClass="topInnerBar">
+      <AnchorPane prefHeight="60.0" prefWidth="800.0" styleClass="topInnerBar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Label layoutX="719.0" layoutY="15.0" styleClass="topInnerLabel" text="Planner" />
+            <Label layoutX="719.0" layoutY="15.0" styleClass="topInnerLabel" text="Planner" AnchorPane.rightAnchor="14.333333333333329" />
             <HBox alignment="CENTER_LEFT" layoutY="9.0" spacing="5.0">
                <children>
                   <DatePicker fx:id="dateSelector" />
@@ -44,7 +44,7 @@
             </HBox>
          </children>
       </AnchorPane>
-      <ScrollPane layoutY="60.0" prefHeight="500.0" prefWidth="800.0">
+      <ScrollPane layoutY="60.0" prefHeight="500.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
          <content>
             <VBox fx:id="paneMain" prefHeight="498.0" prefWidth="798.0" spacing="5.0">
                <padding>
