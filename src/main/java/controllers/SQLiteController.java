@@ -43,6 +43,7 @@ public class SQLiteController {
         return SingletonHelper.INSTANCE;
     }
 
+    //ROOM DAO HERE
     //retrieves all rooms from the database
     public List<Room> listRooms(){
         return roomsDAO.listRooms();
@@ -51,6 +52,11 @@ public class SQLiteController {
     //add new room to table
     public void addRoom(Room room) {
         roomsDAO.addRoom(room);
+    }
+
+    //delete room
+    public void deleteRoom(Room room){
+        roomsDAO.deleteRoom(room);
     }
 
     //list all booking records

@@ -62,4 +62,15 @@ public class RoomsDAO {
             Logger.getGlobal().log(Level.INFO, "Failed to edit room "+newRoom.getId());
         }
     }
+
+    //delete room
+    public void deleteRoom(Room room){
+        try{
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM rooms WHERE id = ?");
+            statement.setInt(1, room.getId());
+            statement.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 }
