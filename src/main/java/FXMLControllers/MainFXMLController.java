@@ -18,7 +18,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
-public class FXMLController implements Initializable {
+public class MainFXMLController implements Initializable {
     
     @FXML
     private Label labelSelectDate;

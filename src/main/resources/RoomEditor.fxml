@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXMLControllers.RoomManagerFXMLController">
+<AnchorPane minHeight="500.0" minWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXMLControllers.RoomManagerFXMLController">
    <children>
-      <AnchorPane prefHeight="60.0" prefWidth="800.0" styleClass="topInnerBar">
+      <AnchorPane styleClass="topInnerBar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Label layoutX="675.0" layoutY="15.0" styleClass="topInnerLabel" text="Room Editor" />
+            <Label layoutX="675.0" layoutY="15.0" styleClass="topInnerLabel" text="Room Editor" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="14.333333333333329" AnchorPane.topAnchor="15.0" />
             <Button fx:id="buttonAddRoom" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onAction="#onButtonAddRoomClick" styleClass="buttonInnerTop" text="Add Room">
                <graphic>
                   <ImageView>
@@ -25,7 +25,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <ScrollPane layoutY="60.0" prefHeight="500.0" prefWidth="800.0">
+      <ScrollPane layoutY="60.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
          <content>
             <VBox fx:id="roomsVBox" alignment="TOP_CENTER" spacing="5.0">
                <padding>

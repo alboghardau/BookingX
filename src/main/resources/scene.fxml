@@ -9,21 +9,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXMLControllers.FXMLController">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXMLControllers.MainFXMLController">
    <children>
-      <AnchorPane layoutX="200.0" prefHeight="40.0" prefWidth="800.0" stylesheets="@styles.css" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Button fx:id="buttonExit" layoutX="738.0" layoutY="1.0" mnemonicParsing="false" onAction="#onButtonExitClick" styleClass="buttonExit" AnchorPane.rightAnchor="14.0">
-               <graphic>
-                  <ImageView>
-                     <image>
-                        <Image url="@icons/icons8_shutdown_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-         </children>
-      </AnchorPane>
       <AnchorPane prefHeight="600.0" prefWidth="200.0" styleClass="paneMainLeft" stylesheets="@styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox layoutY="174.0" prefHeight="261.0" prefWidth="200.0">
@@ -83,6 +70,6 @@
             <Insets />
          </opaqueInsets>
       </AnchorPane>
-      <BorderPane fx:id="paneMainView" layoutX="200.0" layoutY="41.0" prefHeight="560.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
+      <BorderPane fx:id="paneMainView" layoutX="200.0" layoutY="41.0" prefHeight="560.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>
