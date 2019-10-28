@@ -29,9 +29,11 @@ public class BookingDAO {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM bookings");
             ResultSet set = statement.executeQuery();
             while(set.next()){
+                int bookingId = set.getInt("id");
                 int guestId = set.getInt("guest_id");
                 int roomId = set.getInt("room_id");
                 Booking b = new Booking(
+                        bookingId,
                         guestList.stream().filter(guest -> guest.getId() == guestId).findFirst().orElse(new Guest(0,null,null,null,null)),
                         roomList.stream().filter(room -> room.getId() == roomId).findFirst().orElse(new Room(0,null)),
                         set.getInt("persons"),
@@ -62,9 +64,11 @@ public class BookingDAO {
             System.out.println(lastDay);
             ResultSet set = statement.executeQuery();
             while (set.next()){
+                int bookingId = set.getInt("id");
                 int guestId = set.getInt("guest_id");
                 int roomId = set.getInt("room_id");
                 Booking b = new Booking(
+                        bookingId,
                         guestList.stream().filter(guest -> guest.getId() == guestId).findFirst().orElse(new Guest(0,null,null,null,null)),
                         roomList.stream().filter(room -> room.getId() == roomId).findFirst().orElse(new Room(0,null)),
                         set.getInt("persons"),
@@ -94,6 +98,16 @@ public class BookingDAO {
         }catch (SQLException e){
             e.printStackTrace();
             Logger.getGlobal().log(Level.INFO, "Failed to add booking into database");
+        }
+    }
+
+    public void deleteBooking(Booking booking){
+        try{
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM bookings WHERE id = ?");
+            statement.setInt(1, booking.getId());
+            statement.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
         }
     }
 }

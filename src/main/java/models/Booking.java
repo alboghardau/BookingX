@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class Booking {
 
+    private int id;
     private Guest guest;
     private Room room;
     private int persons;
@@ -11,7 +12,8 @@ public class Booking {
     private LocalDate checkOut;
     private double price;
 
-    public Booking(Guest guest, Room room, int persons, LocalDate checkIn, LocalDate checkOut, double price) {
+    public Booking(int id, Guest guest, Room room, int persons, LocalDate checkIn, LocalDate checkOut, double price) {
+        this.id = id;
         this.guest = guest;
         this.room = room;
         this.persons = persons;
@@ -66,6 +68,14 @@ public class Booking {
 
     public void setRoom(Room room) {
         this.room = room;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
