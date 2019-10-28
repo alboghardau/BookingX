@@ -44,6 +44,8 @@ public class RoomManagerFXMLController implements Initializable {
     private Button buttonEditRoom;
     @FXML
     private Button buttonCancelEdit;
+    @FXML
+    private Button buttonDelete;
 
 
     private List<Room> list;
@@ -76,15 +78,24 @@ public class RoomManagerFXMLController implements Initializable {
 
     //TOP BAR CONTROLS
     private void displayEditRoom(Room room){
+        labelRoomName.setText("Room name:");
         textRoomName.setText(room.getName());
+        textRoomName.setVisible(true);
+        textRoomName.setManaged(true);
         buttonEditRoom.setVisible(true);
+        buttonEditRoom.setManaged(true);
         buttonAddRoom.setVisible(false);
         buttonAddRoom.setManaged(false);
+        buttonDelete.setVisible(false);
+        buttonDelete.setManaged(false);
         buttonCancelEdit.setVisible(true);
+        buttonCancelEdit.setManaged(true);
+
         buttonEditRoom.setOnAction(event -> {
             if(!textRoomName.equals("") && !textRoomName.getText().equals(room.getName())){
                 Room newRoom = new Room(room.getId(), textRoomName.getText());
                 SQLiteController.getInstance().editRoom(newRoom);
+                displayAddRoom();
                 refreshRoomList();
             }else{
                 blinkBlink();
@@ -93,10 +104,33 @@ public class RoomManagerFXMLController implements Initializable {
     }
 
     private void displayAddRoom(){
+        labelRoomName.setText("Room name:");
         textRoomName.setText("");
+        textRoomName.setVisible(true);
         buttonAddRoom.setVisible(true);
         buttonEditRoom.setVisible(false);
+        buttonDelete.setVisible(false);
+        buttonDelete.setManaged(false);
         buttonCancelEdit.setVisible(false);
+    }
+
+    private void displayDelete(Room room){
+        labelRoomName.setText("Are you sure you want to delete room "+room.getName()+"?");
+        textRoomName.setVisible(false);
+        textRoomName.setManaged(false);
+        buttonAddRoom.setVisible(false);
+        buttonAddRoom.setManaged(false);
+        buttonEditRoom.setVisible(false);
+        buttonEditRoom.setManaged(false);
+        buttonDelete.setVisible(true);
+        buttonDelete.setManaged(true);
+        buttonCancelEdit.setVisible(true);
+
+        buttonDelete.setOnAction(event -> {
+            SQLiteController.getInstance().deleteRoom(room);
+            refreshRoomList();
+            displayAddRoom();
+        });
     }
 
     //OHTER UI METHODS
@@ -108,8 +142,7 @@ public class RoomManagerFXMLController implements Initializable {
             Label roomName = WindowEditorHelper.createLabel(e.getName());
             Button buttonDelete = WindowEditorHelper.createButton("Delete");
             buttonDelete.setOnAction(event -> {
-                SQLiteController.getInstance().deleteRoom(e);
-                refreshRoomList();
+                displayDelete(e);
             });
             Button buttonEdit = WindowEditorHelper.createButton("Edit");
             buttonEdit.setOnAction(event -> {
