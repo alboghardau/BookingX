@@ -58,4 +58,15 @@ public class GuestDAO {
             e.printStackTrace();
         }
     }
+
+    //delete guest from the database
+    public void deleteGuest(Guest guest){
+        try {
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM bookigns WHERE id = ?");
+            statement.setInt(1, guest.getId());
+            statement.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 }

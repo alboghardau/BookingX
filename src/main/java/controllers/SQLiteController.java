@@ -65,6 +65,16 @@ public class SQLiteController {
         return guestDAO.listAll();
     }
 
+    //add guest
+    public void addGuest(Guest guest){
+        guestDAO.addGuest(guest);
+    }
+
+    //delete guest
+    public void deleteGuest(Guest guest){
+        guestDAO.deleteGuest(guest);
+    }
+
     //BOOKING DAO HERE
     //list all booking records
     public List<Booking> listBookingRecords(){

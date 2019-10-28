@@ -23,6 +23,7 @@ public class BookingDAO {
         this.connection = connection;
     }
 
+    //retreives all bookings from the database
     public List<Booking> listBookings(List<Room> roomList, List<Guest> guestList){
         List<Booking> list = new ArrayList<>();
         try{
@@ -86,6 +87,7 @@ public class BookingDAO {
         return Collections.emptyList();
     }
 
+    //add new booking to the database
     public void addBooking(Booking booking, Guest guest, Room room){
         try{
             PreparedStatement statement = connection.prepareStatement("INSERT INTO bookings (room_id, guest_id, date_in, date_out, value) ");
@@ -101,6 +103,7 @@ public class BookingDAO {
         }
     }
 
+    //delete a booking from the data base
     public void deleteBooking(Booking booking){
         try{
             PreparedStatement statement = connection.prepareStatement("DELETE FROM bookings WHERE id = ?");

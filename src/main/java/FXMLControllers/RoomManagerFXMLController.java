@@ -1,4 +1,4 @@
-package views;
+package FXMLControllers;
 
 import controllers.SQLiteController;
 import helpers.WindowEditorHelper;

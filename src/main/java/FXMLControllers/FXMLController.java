@@ -1,4 +1,4 @@
-package views;
+package FXMLControllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;

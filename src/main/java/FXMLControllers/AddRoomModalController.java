@@ -15,7 +15,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.effect.GaussianBlur;
 import models.Room;
 import views.MainApp;
-import views.RoomManagerFXMLController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
