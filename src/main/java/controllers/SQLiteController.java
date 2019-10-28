@@ -54,6 +54,11 @@ public class SQLiteController {
         roomsDAO.addRoom(room);
     }
 
+    //editroom
+    public void editRoom(Room newRoom){
+        roomsDAO.editRoom(newRoom);
+    }
+
     //delete room
     public void deleteRoom(Room room){
         roomsDAO.deleteRoom(room);

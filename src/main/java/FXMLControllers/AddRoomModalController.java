@@ -5,7 +5,7 @@ TESTED - OK
 package FXMLControllers;
 
 import controllers.SQLiteController;
-import helpers.WindowHelper;
+import helpers.WindowActionHelper;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -33,7 +33,7 @@ public class AddRoomModalController implements Initializable {
         addRoomModalCancel.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                WindowHelper.closeModal(event);
+                WindowActionHelper.closeModal(event);
             }
         });
 
@@ -43,7 +43,7 @@ public class AddRoomModalController implements Initializable {
                 if(!textRoomName.getText().equals("")){
                     Room room = new Room(1, textRoomName.getText());
                     SQLiteController.getInstance().addRoom(room);
-                    WindowHelper.closeModal(event);
+                    WindowActionHelper.closeModal(event);
                 }
             }
         });

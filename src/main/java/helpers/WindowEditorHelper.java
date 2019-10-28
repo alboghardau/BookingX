@@ -1,3 +1,4 @@
+//THIS FILE WILL CONTAIN WINDOW EDITING EVENTS (ADD NEW ELEMENTS, GENERATE ELEMENTS, so on)
 package helpers;
 
 import javafx.geometry.Pos;

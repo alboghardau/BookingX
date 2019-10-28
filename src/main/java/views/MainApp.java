@@ -1,12 +1,11 @@
 package views;
 
-import helpers.WindowHelper;
+import helpers.WindowActionHelper;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class MainApp extends Application {
     private double xOffset = 0;
@@ -28,7 +27,7 @@ public class MainApp extends Application {
         stage.setScene(scene);
         stage.show();
 
-        WindowHelper.setMovableWindow(root, stage);
+        WindowActionHelper.setMovableWindow(root, stage);
     }
 
     private void setParent(Parent parent){

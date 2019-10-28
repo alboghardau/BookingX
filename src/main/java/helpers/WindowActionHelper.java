@@ -1,3 +1,5 @@
+//THIS FILE WILL CONTAIN WINDOW ACTION EVENTS
+
 package helpers;
 
 import javafx.event.ActionEvent;
@@ -8,7 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import views.MainApp;
 
-public class WindowHelper {
+public class WindowActionHelper {
     private static double xOffset = 0;
     private static double yOffset = 0;
 

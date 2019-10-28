@@ -81,6 +81,7 @@
 .labelInner{
     -fx-text-fill: #ffffff;
     -fx-font-size: 15;
+    -fx-padding: 5,5,5,5;
 }
 
 .labelInnerBlack{

@@ -21,8 +21,6 @@ import javafx.scene.layout.Pane;
 public class MainFXMLController implements Initializable {
     
     @FXML
-    private Label labelSelectDate;
-    @FXML
     private BorderPane paneMainView;
     @FXML
     private Button buttonPlanner;
@@ -39,6 +37,18 @@ public class MainFXMLController implements Initializable {
 
     }
 
+    //MAIN PANE SELECTORS
+    @FXML
+    public void onButtonPlannerClick(){
+        setInnerPane("../Planner.fxml");
+    }
+
+    @FXML
+    public void onBtnRoomEditorClick(){
+        setInnerPane("../RoomEditor.fxml");
+    }
+
+    //OTHER METHODS FOR THIS FXML CONTROLLER
     //function to set the inner pane without copying the code
     private void setInnerPane(String url){
         Parent root = null;
@@ -51,20 +61,4 @@ public class MainFXMLController implements Initializable {
         paneMainView.setCenter(root);
     }
 
-
-
-    @FXML
-    public void onButtonPlannerClick(){
-        setInnerPane("../Planner.fxml");
-    }
-
-    @FXML
-    public void onBtnRoomEditorClick(){
-        setInnerPane("../RoomEditor.fxml");
-    }
-
-    @FXML
-    public void onButtonExitClick(){
-        System.exit(0);
-    }
 }
