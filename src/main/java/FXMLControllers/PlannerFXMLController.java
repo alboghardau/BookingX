@@ -52,7 +52,7 @@ public class PlannerFXMLController implements Initializable {
             List<Booking> bookedPerRoom = bookingList.stream().filter( b -> b.getRoom().getId() == element.getId()).collect(Collectors.toList());
             Map<Integer, Booking> mapDaysBookedPerRoom = bookedDays(bookedPerRoom,daysThisMonth);
 
-            HBox h = WindowEditorHelper.createHBox(0);
+            HBox h = WindowEditorHelper.createHBox(1);
             //h.prefWidthProperty().bind(scrollPane.widthProperty());
             paneMain.getChildren().add(h);
             Label label = WindowEditorHelper.createLabel(element.getName());
@@ -84,6 +84,16 @@ public class PlannerFXMLController implements Initializable {
                 });
             }
         });
+    }
+
+    private void addButtonDisplay(boolean show){
+        if(show == true){
+            buttonAddBooking.setVisible(true);
+            buttonAddBooking.setManaged(true);
+        }else{
+            buttonAddBooking.setVisible(false);
+            buttonAddBooking.setManaged(false);
+        }
     }
 
     //returns a map of ( day number, booking record )

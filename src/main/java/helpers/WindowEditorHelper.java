@@ -3,6 +3,7 @@ package helpers;
 
 import FXMLControllers.MainFXMLController;
 import FXMLControllers.PlannerFXMLController;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -50,6 +51,7 @@ public class WindowEditorHelper {
         label.getStyleClass().add("labelRoomName");
         label.setText(text);
         label.setMinWidth(100);
+        label.setPadding(new Insets(0,0,0,5));
         return label;
     }
 
@@ -72,11 +74,8 @@ public class WindowEditorHelper {
         }
 
         //DIMENSION PROPERTIES
-        //button.setMinWidth(Double.valueOf((paneWidth-170)/31));
         button.setMaxWidth(Double.MAX_VALUE);
-
 
         return button;
     }
-
 }
