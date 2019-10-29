@@ -23,9 +23,12 @@ public class MainApp extends Application {
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         //stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("BookingX");
+        stage.sizeToScene();
         //stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
+        stage.setMinWidth(stage.getWidth());
+        stage.setMinHeight(stage.getHeight());
 
         WindowActionHelper.setMovableWindow(root, stage);
     }

@@ -89,6 +89,12 @@
     -fx-font-size: 15;
 }
 
+.labelRoomName{
+    -fx-background-color: #ffffff;
+    -fx-text-size: 12;
+
+}
+
 .buttonDay{
     -fx-background-color: #ffffff;
     -fx-font-size: 8;

@@ -10,12 +10,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import models.Booking;
 import models.Room;
 import views.MainApp;
-
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -26,10 +27,17 @@ public class PlannerFXMLController implements Initializable {
 
     @FXML
     private VBox paneMain;
-    public DatePicker dateSelector;
+    @FXML
+    private DatePicker dateSelector;
+    @FXML
+    private Button buttonAddBooking;
+    @FXML
+    private ScrollPane scrollPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        paneMain.prefWidthProperty().bind(scrollPane.widthProperty());
         dateSelectorInitialize();
     }
 
@@ -45,21 +53,25 @@ public class PlannerFXMLController implements Initializable {
             Map<Integer, Booking> mapDaysBookedPerRoom = bookedDays(bookedPerRoom,daysThisMonth);
 
             HBox h = WindowEditorHelper.createHBox(0);
+            //h.prefWidthProperty().bind(scrollPane.widthProperty());
             paneMain.getChildren().add(h);
             Label label = WindowEditorHelper.createLabel(element.getName());
+
+            h.setHgrow(label,Priority.ALWAYS);
             h.getChildren().add(label);
 
             for(int i = 1; i <= daysThisMonth; i++){
                 final int day = i;
                 Button buttonDay = null;
-                if(mapDaysBookedPerRoom.containsKey(day)){
-                    buttonDay = WindowEditorHelper.createButtonBooked(i+"");
-                }else if(dateSelectorCheck(i) && element.getId() == TimeController.getInstance().getSelectedRoom().getId()){
-                    buttonDay = WindowEditorHelper.createButtonCecked(i+"");
-                }else {
-                    buttonDay = WindowEditorHelper.createButtonDay(i+"");
-                }
 
+                if(mapDaysBookedPerRoom.containsKey(day)){
+                    buttonDay = WindowEditorHelper.createButtonDay("booked",i+"", paneMain.getWidth());
+                }else if(dateSelectorCheck(i) && element.getId() == TimeController.getInstance().getSelectedRoom().getId()){
+                    buttonDay = WindowEditorHelper.createButtonDay("checked",i+"", paneMain.getWidth());
+                }else {
+                    buttonDay = WindowEditorHelper.createButtonDay("day",i+"", paneMain.getWidth());
+                }
+                h.setHgrow(buttonDay,Priority.ALWAYS);
                 h.getChildren().add(buttonDay);
 
                 buttonDay.setOnAction(new EventHandler<ActionEvent>() {

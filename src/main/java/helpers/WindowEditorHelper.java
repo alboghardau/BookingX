@@ -1,6 +1,8 @@
 //THIS FILE WILL CONTAIN WINDOW EDITING EVENTS (ADD NEW ELEMENTS, GENERATE ELEMENTS, so on)
 package helpers;
 
+import FXMLControllers.MainFXMLController;
+import FXMLControllers.PlannerFXMLController;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -19,7 +21,7 @@ public class WindowEditorHelper {
 
     public static HBox createHBox(int spacing){
         HBox h = new HBox();
-        h.setAlignment(Pos.CENTER);
+        h.setAlignment(Pos.CENTER_LEFT);
         h.setPrefWidth(770);            //temporary fix for center of controlls
         h.setSpacing(spacing);
         return h;
@@ -45,43 +47,36 @@ public class WindowEditorHelper {
 
     public static Label createLabel(String text){
         Label label = new Label();
-        label.getStyleClass().add("labelInnerBlack");
+        label.getStyleClass().add("labelRoomName");
         label.setText(text);
         label.setMinWidth(100);
         return label;
     }
 
-    public static Button createButtonDay(String text){
+    public static Button createButtonDay(String type, String text, Double paneWidth){
         Button button = new Button();
-        button.getStyleClass().add("buttonDay");
         button.setText(text);
         button.setAlignment(Pos.CENTER);
-        button.setMinWidth(Integer.valueOf(690/31));
+
+        //TYPE OF THE BUTTON SWITCH
+        switch (type){
+            case "day":
+                button.getStyleClass().add("buttonDay");
+                break;
+            case "booked":
+                button.getStyleClass().add("buttonBooked");
+                break;
+            case "checked":
+                button.getStyleClass().add("buttonChecked");
+                break;
+        }
+
+        //DIMENSION PROPERTIES
+        //button.setMinWidth(Double.valueOf((paneWidth-170)/31));
+        button.setMaxWidth(Double.MAX_VALUE);
 
 
-        //label.setMinHeight(24);
         return button;
     }
 
-    public static Button createButtonBooked(String text){
-        Button button = new Button();
-        button.getStyleClass().add("buttonBooked");
-        button.setText(text);
-        button.setAlignment(Pos.CENTER);
-        button.setMinWidth(Integer.valueOf(690/31));
-
-        //label.setMinHeight(24);
-        return button;
-    }
-
-    public static Button createButtonCecked(String text){
-        Button button = new Button();
-        button.getStyleClass().add("buttonChecked");
-        button.setText(text);
-        button.setAlignment(Pos.CENTER);
-        button.setMinWidth(Integer.valueOf(690/31));
-
-        //label.setMinHeight(24);
-        return button;
-    }
 }
