@@ -16,6 +16,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import models.Booking;
 import models.Room;
+import org.xml.sax.helpers.AttributesImpl;
 import views.MainApp;
 
 import java.net.URL;
@@ -42,6 +43,14 @@ public class PlannerFXMLController implements Initializable {
     }
 
     private void refreshList(){
+        //TOP BUTTONS AREA
+        if(TimeController.getInstance().getCheckInSelector() == null){
+            addButtonDisplay(false);
+        }else{
+            addButtonDisplay(true);
+        }
+
+        //ROOM LIST AREA
         paneMain.getChildren().clear();
 
         int daysThisMonth = TimeController.getInstance().getAppDate().lengthOfMonth();
@@ -86,6 +95,7 @@ public class PlannerFXMLController implements Initializable {
         });
     }
 
+    //Switches visible state of Add booking button
     private void addButtonDisplay(boolean show){
         if(show == true){
             buttonAddBooking.setVisible(true);

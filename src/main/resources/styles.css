@@ -121,3 +121,13 @@
  .buttonBooked:hover{
      -fx-background-color: #bef67a;
  }
+
+ .buttonModalControl{
+    -fx-background-color: transparent;
+    -fx-font-size: 15;
+     -fx-text-fill: #ffffff;
+ }
+
+ .buttonModalControl:hover{
+    -fx-background-color: #42a5f5;
+ }
