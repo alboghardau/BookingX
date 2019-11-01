@@ -61,20 +61,27 @@ public class TimeController {
         this.selectedRoom = selectedRoom;
     }
 
+    //resets dates
+    public void resetDates(){
+        setCheckInSelector(null);
+        setCheckOutSelector(null);
+        setSelectedRoom(null);
+    }
+
     public void setDate(LocalDate date, Room room){
         if(checkInSelector == null && selectedRoom == null){
             setCheckInSelector(date);
-            setCheckOutSelector(date);
+            setCheckOutSelector(date.plusDays(1));
             setSelectedRoom(room);
         }else if(room.getId() != selectedRoom.getId()){
             setCheckInSelector(date);
-            setCheckOutSelector(date);
+            setCheckOutSelector(date.plusDays(1));
             setSelectedRoom(room);
         }else if(date.isAfter(checkInSelector)){
-            setCheckOutSelector(date);
+            setCheckOutSelector(date.plusDays(1));
         }else if(date.isBefore(checkInSelector)){
             setCheckInSelector(date);
-            setCheckOutSelector(date);
+            setCheckOutSelector(date.plusDays(1));
         }else{
             setCheckInSelector(null);
             setCheckOutSelector(null);

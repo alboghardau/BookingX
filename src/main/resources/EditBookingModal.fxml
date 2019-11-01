@@ -31,7 +31,7 @@
                   <DatePicker fx:id="dateCheckOutPicker" prefWidth="150.0" />
                </children>
             </HBox>
-            <HBox fx:id="textFieldRoom" alignment="CENTER_LEFT">
+            <HBox fx:id="" alignment="CENTER_LEFT">
                <children>
                   <Label prefWidth="100.0" styleClass="labelInner" text="First Name">
                      <HBox.margin>
@@ -101,7 +101,7 @@
       </VBox>
       <HBox layoutX="286.0" layoutY="276.0" spacing="5.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
          <children>
-            <Button mnemonicParsing="false" prefWidth="100.0" styleClass="buttonModalControl" text="Add">
+            <Button fx:id="buttonAdd" mnemonicParsing="false" onAction="#onButtonAddAction" prefWidth="100.0" styleClass="buttonModalControl" text="Add">
                <graphic>
                   <ImageView>
                      <image>
@@ -110,7 +110,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefWidth="100.0" styleClass="buttonModalControl" text="Edit">
+            <Button fx:id="buttonEdit" mnemonicParsing="false" onAction="#onButtonEditAction" prefWidth="100.0" styleClass="buttonModalControl" text="Edit">
                <graphic>
                   <ImageView>
                      <image>
@@ -119,7 +119,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefWidth="100.0" styleClass="buttonModalControl" text="Cancel">
+            <Button fx:id="buttonCancel" mnemonicParsing="false" onAction="#onButtonCancelAction" prefWidth="100.0" styleClass="buttonModalControl" text="Cancel">
                <graphic>
                   <ImageView>
                      <image>

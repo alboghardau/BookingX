@@ -2,11 +2,17 @@ package FXMLControllers;
 
 import controllers.SQLiteController;
 import controllers.TimeController;
+import helpers.WindowActionHelper;
 import helpers.WindowEditorHelper;
+import helpers.WindowViewHelper;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -14,11 +20,16 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.Window;
 import models.Booking;
 import models.Room;
 import org.xml.sax.helpers.AttributesImpl;
 import views.MainApp;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.*;
@@ -45,9 +56,9 @@ public class PlannerFXMLController implements Initializable {
     private void refreshList(){
         //TOP BUTTONS AREA
         if(TimeController.getInstance().getCheckInSelector() == null){
-            addButtonDisplay(false);
+            WindowViewHelper.setVisibility(buttonAddBooking, false);
         }else{
-            addButtonDisplay(true);
+            WindowViewHelper.setVisibility(buttonAddBooking, true);
         }
 
         //ROOM LIST AREA
@@ -62,7 +73,6 @@ public class PlannerFXMLController implements Initializable {
             Map<Integer, Booking> mapDaysBookedPerRoom = bookedDays(bookedPerRoom,daysThisMonth);
 
             HBox h = WindowEditorHelper.createHBox(1);
-            //h.prefWidthProperty().bind(scrollPane.widthProperty());
             paneMain.getChildren().add(h);
             Label label = WindowEditorHelper.createLabel(element.getName());
 
@@ -87,23 +97,11 @@ public class PlannerFXMLController implements Initializable {
                     @Override
                     public void handle(ActionEvent event) {
                         TimeController.getInstance().setDate(LocalDate.of(TimeController.getInstance().getAppDate().getYear(),TimeController.getInstance().getAppDate().getMonth(),day),element);
-                        System.out.println(TimeController.getInstance().toString());
                         refreshList();
                     }
                 });
             }
         });
-    }
-
-    //Switches visible state of Add booking button
-    private void addButtonDisplay(boolean show){
-        if(show == true){
-            buttonAddBooking.setVisible(true);
-            buttonAddBooking.setManaged(true);
-        }else{
-            buttonAddBooking.setVisible(false);
-            buttonAddBooking.setManaged(false);
-        }
     }
 
     //returns a map of ( day number, booking record )
@@ -112,7 +110,7 @@ public class PlannerFXMLController implements Initializable {
         for(int i = 1; i <= daysOfMonth; i++) {
             LocalDate testDay = LocalDate.of(TimeController.getInstance().getAppDate().getYear(),TimeController.getInstance().getAppDate().getMonth(),i);
             for (Booking booking : bookedPerRoom) {
-                if ((testDay.isAfter(booking.getCheckIn()) || testDay.isEqual(booking.getCheckIn())) && (testDay.isBefore(booking.getCheckOut()) || testDay.isEqual(booking.getCheckOut()))) {
+                if ((testDay.isAfter(booking.getCheckIn()) || testDay.isEqual(booking.getCheckIn())) && (testDay.isBefore(booking.getCheckOut().minusDays(1)) || testDay.isEqual(booking.getCheckOut().minusDays(1)))) {
                     map.put(i, booking);
                 }
             }
@@ -125,7 +123,7 @@ public class PlannerFXMLController implements Initializable {
         LocalDate dateA = TimeController.getInstance().getCheckInSelector();
         LocalDate dateB = TimeController.getInstance().getCheckOutSelector();
         if(dateA != null && dateB != null){
-            if ((dayDate.isAfter(dateA) || dayDate.isEqual(dateA)) && (dayDate.isBefore(dateB) || dayDate.isEqual(dateB))){
+            if ((dayDate.isAfter(dateA) || dayDate.isEqual(dateA)) && (dayDate.isBefore(dateB.minusDays(1)) || dayDate.isEqual(dateB.minusDays(1)))){
                 return true;
             }
         }
@@ -143,6 +141,7 @@ public class PlannerFXMLController implements Initializable {
         refreshList();
     }
 
+    //BUTTONS ACTIONS
     @FXML
     public void onButtonNext(){
         TimeController.getInstance().setAppDate(TimeController.getInstance().getAppDate().plusMonths(1));
@@ -150,10 +149,27 @@ public class PlannerFXMLController implements Initializable {
         refreshList();
     }
 
-    @FXML void onButtonPrevious(){
+    @FXML
+    public void onButtonPrevious(){
         TimeController.getInstance().setAppDate(TimeController.getInstance().getAppDate().minusMonths(1));
         dateSelector.setValue(TimeController.getInstance().getAppDate());
         refreshList();
     }
 
+    @FXML
+    public void onButtonAddBookingAction(){
+        try{
+            Stage addBooking = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("../EditBookingModal.fxml"));
+            Window parentWindow = Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
+            addBooking.initStyle(StageStyle.UNDECORATED);
+            addBooking.setScene(new Scene(root));
+            addBooking.initOwner(parentWindow);
+            addBooking.initModality(Modality.APPLICATION_MODAL);
+            WindowActionHelper.setMovableWindow(root,addBooking);
+            addBooking.showAndWait();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 }

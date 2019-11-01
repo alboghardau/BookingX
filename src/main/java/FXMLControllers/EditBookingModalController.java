@@ -1,9 +1,15 @@
 package FXMLControllers;
 
+import controllers.SQLiteController;
+import controllers.TimeController;
+import helpers.WindowViewHelper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import models.Booking;
+import models.Guest;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,9 +34,79 @@ public class EditBookingModalController implements Initializable {
     private TextField textFieldPersons;
     @FXML
     private TextField textFieldPrice;
+    @FXML
+    private Button buttonAdd;
+    @FXML
+    private Button buttonEdit;
+    @FXML
+    private Button buttonCancel;
 
     @FXML
     public void initialize(URL url, ResourceBundle rb){
+        dateCheckInPicker.setValue(TimeController.getInstance().getCheckInSelector());
+        WindowViewHelper.disableDatePicker(dateCheckInPicker);
+        dateCheckOutPicker.setValue(TimeController.getInstance().getCheckOutSelector());
+        WindowViewHelper.disableDatePicker(dateCheckOutPicker);
+        textFieldRoom.setText(TimeController.getInstance().getSelectedRoom().getName());
+        textFieldRoom.setEditable(false);
+    }
+
+    //SWITCHES DISPLAY FOR THE MODAL ACTION
+    private void buttonsDisplay(String action){
+        switch (action){
+            case "add":
+                WindowViewHelper.setVisibility(buttonAdd,true);
+                break;
+            case "edit":
+                WindowViewHelper.setVisibility(buttonEdit,true);
+                break;
+        }
+    }
+
+    //BUTTONS ACTIONS
+    @FXML
+    public void onButtonAddAction(){
+        //breakers for the method, if any is true -> return
+        if(textFieldFirstName.equals("")){
+            return;
+        }
+        if(textFieldLastName.equals("")){
+            return;
+        }
+        if(textFieldTelephone.equals("")){
+            return;
+        }
+        if(textFieldPrice.equals("")){
+            return;
+        }
+
+        Guest guest = new Guest(0,
+                textFieldFirstName.getText(),
+                textFieldLastName.getText(),
+                textFieldTelephone.getText(),
+                textFieldEmail.getText()
+        );
+        Booking booking = new Booking(0,
+                guest,
+                TimeController.getInstance().getSelectedRoom(),
+                Integer.parseInt(textFieldPersons.getText()),
+                TimeController.getInstance().getCheckInSelector(),
+                TimeController.getInstance().getCheckOutSelector(),
+                Double.parseDouble(textFieldPrice.getText()));
+        SQLiteController.getInstance().addBooking(booking,guest,TimeController.getInstance().getSelectedRoom());
+        buttonAdd.getScene().getWindow().hide();
+        TimeController.getInstance().resetDates();
+    }
+
+    @FXML
+    public void onButtonEditAction(){
 
     }
+
+    @FXML
+    public void onButtonCancelAction(){
+        buttonCancel.getScene().getWindow().hide();
+
+    }
+
 }

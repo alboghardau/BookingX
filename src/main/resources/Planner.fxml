@@ -37,7 +37,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="buttonAddBooking" mnemonicParsing="false" styleClass="buttonInnerTop" text="Add Booking">
+                  <Button fx:id="buttonAddBooking" mnemonicParsing="false" onAction="#onButtonAddBookingAction" styleClass="buttonInnerTop" text="Add Booking">
                      <graphic>
                         <ImageView>
                            <image>

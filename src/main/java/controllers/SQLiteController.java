@@ -90,4 +90,13 @@ public class SQLiteController {
     public List<Booking> listBookingMonth(){
         return bookingDAO.monthlyBooking(roomsDAO.listRooms(),guestDAO.listAll(),TimeController.getInstance().getAppDate());
     }
+
+    //adds new booking and guest into database
+    public void addBooking(Booking booking, Guest guest, Room room){
+        addGuest(guest);
+        Guest newGuest = guest;
+        newGuest.setId(guestDAO.lastGuestId());
+        bookingDAO.addBooking(booking, newGuest, room);
+
+    }
 }

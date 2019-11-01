@@ -90,7 +90,7 @@ public class BookingDAO {
     //add new booking to the database
     public void addBooking(Booking booking, Guest guest, Room room){
         try{
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO bookings (room_id, guest_id, date_in, date_out, value) ");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO bookings (room_id, guest_id, date_in, date_out, value) VALUES (?,?,?,?,?) ");
             statement.setInt(1,room.getId());
             statement.setInt(2,guest.getId());
             statement.setString(3,booking.getCheckIn().toString());

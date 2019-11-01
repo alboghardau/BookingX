@@ -69,4 +69,16 @@ public class GuestDAO {
             e.printStackTrace();
         }
     }
+
+    //retrieves last guest id
+    public int lastGuestId(){
+        try{
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM guests ORDER BY id DESC LIMIT 1");
+            ResultSet set = statement.executeQuery();
+            return set.getInt("id");
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }
