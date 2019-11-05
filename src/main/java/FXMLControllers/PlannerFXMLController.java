@@ -20,10 +20,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.stage.Window;
+import javafx.stage.*;
 import models.Booking;
 import models.Room;
 import org.xml.sax.helpers.AttributesImpl;
@@ -156,6 +153,7 @@ public class PlannerFXMLController implements Initializable {
         refreshList();
     }
 
+    //DISPLAY ADD/EDIT ROOM MODAL
     @FXML
     public void onButtonAddBookingAction(){
         try{
@@ -168,6 +166,7 @@ public class PlannerFXMLController implements Initializable {
             addBooking.initModality(Modality.APPLICATION_MODAL);
             WindowActionHelper.setMovableWindow(root,addBooking);
             addBooking.showAndWait();
+            refreshList();      //USED TO REFRESH WINDOW AFTER showAndWait();
         }catch (IOException e){
             e.printStackTrace();
         }
