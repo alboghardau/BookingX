@@ -1,30 +1,33 @@
 package controllers;
 
+import models.Booking;
 import models.Room;
 
 import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class TimeController {
+public class BookingController {
 
     private LocalDate appDate;
     private LocalDate checkInSelector;
     private LocalDate checkOutSelector;
     private Room selectedRoom;
+    private Booking selectedBooking;
 
-    private TimeController(){
+    private BookingController(){
         this.appDate = LocalDate.now();
         this.checkInSelector = null;
         this.checkOutSelector = null;
         this.selectedRoom = null;
+        this.selectedBooking = null;
     }
 
     private static class SingletonHelper{
-        private static final TimeController INSTANCE = new TimeController();
+        private static final BookingController INSTANCE = new BookingController();
     }
 
-    public static TimeController getInstance(){
+    public static BookingController getInstance(){
         return SingletonHelper.INSTANCE;
     }
 
@@ -61,11 +64,24 @@ public class TimeController {
         this.selectedRoom = selectedRoom;
     }
 
+    public Booking getSelectedBooking() {
+        return selectedBooking;
+    }
+
+    public void setSelectedBooking(Booking selectedBooking) {
+        this.selectedBooking = selectedBooking;
+    }
+
     //resets dates
     public void resetDates(){
         setCheckInSelector(null);
         setCheckOutSelector(null);
         setSelectedRoom(null);
+    }
+
+    //resets selected booking
+    public void resetBooking(){
+        setSelectedBooking(null);
     }
 
     public void setDate(LocalDate date, Room room){

@@ -7,10 +7,7 @@ import models.Booking;
 import models.Guest;
 import models.Room;
 
-import java.awt.*;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class SQLiteController {
@@ -93,7 +90,7 @@ public class SQLiteController {
 
     //list bookings in a month
     public List<Booking> listBookingMonth(){
-        return bookingDAO.monthlyBooking(roomsDAO.listRooms(),guestDAO.listAll(),TimeController.getInstance().getAppDate());
+        return bookingDAO.monthlyBooking(roomsDAO.listRooms(),guestDAO.listAll(), BookingController.getInstance().getAppDate());
     }
 
     //adds new booking and guest into database

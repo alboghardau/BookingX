@@ -1,7 +1,7 @@
 package FXMLControllers;
 
 import controllers.SQLiteController;
-import controllers.TimeController;
+import controllers.BookingController;
 import helpers.WindowActionHelper;
 import helpers.WindowEditorHelper;
 import helpers.WindowViewHelper;
@@ -10,7 +10,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -23,8 +22,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.*;
 import models.Booking;
 import models.Room;
-import org.xml.sax.helpers.AttributesImpl;
-import views.MainApp;
 
 import java.io.IOException;
 import java.net.URL;
@@ -52,7 +49,7 @@ public class PlannerFXMLController implements Initializable {
 
     private void refreshList(){
         //TOP BUTTONS AREA
-        if(TimeController.getInstance().getCheckInSelector() == null){
+        if(BookingController.getInstance().getCheckInSelector() == null){
             WindowViewHelper.setVisibility(buttonAddBooking, false);
         }else{
             WindowViewHelper.setVisibility(buttonAddBooking, true);
@@ -61,7 +58,7 @@ public class PlannerFXMLController implements Initializable {
         //ROOM LIST AREA
         paneMain.getChildren().clear();
 
-        int daysThisMonth = TimeController.getInstance().getAppDate().lengthOfMonth();
+        int daysThisMonth = BookingController.getInstance().getAppDate().lengthOfMonth();
         List<Room> roomsList = SQLiteController.getInstance().listRooms();
         List<Booking> bookingList = SQLiteController.getInstance().listBookingMonth();
 
@@ -82,7 +79,7 @@ public class PlannerFXMLController implements Initializable {
 
                 if(mapDaysBookedPerRoom.containsKey(day)){
                     buttonDay = WindowEditorHelper.createButtonDay("booked",i+"", paneMain.getWidth());
-                }else if(dateSelectorCheck(i) && element.getId() == TimeController.getInstance().getSelectedRoom().getId()){
+                }else if(dateSelectorCheck(i) && element.getId() == BookingController.getInstance().getSelectedRoom().getId()){
                     buttonDay = WindowEditorHelper.createButtonDay("checked",i+"", paneMain.getWidth());
                 }else {
                     buttonDay = WindowEditorHelper.createButtonDay("day",i+"", paneMain.getWidth());
@@ -93,7 +90,7 @@ public class PlannerFXMLController implements Initializable {
                 buttonDay.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        TimeController.getInstance().setDate(LocalDate.of(TimeController.getInstance().getAppDate().getYear(),TimeController.getInstance().getAppDate().getMonth(),day),element);
+                        BookingController.getInstance().setDate(LocalDate.of(BookingController.getInstance().getAppDate().getYear(), BookingController.getInstance().getAppDate().getMonth(),day),element);
                         refreshList();
                     }
                 });
@@ -105,7 +102,7 @@ public class PlannerFXMLController implements Initializable {
     private Map<Integer,Booking> bookedDays(List<Booking> bookedPerRoom, int daysOfMonth) {
         Map<Integer, Booking> map = new TreeMap<Integer, Booking>();
         for(int i = 1; i <= daysOfMonth; i++) {
-            LocalDate testDay = LocalDate.of(TimeController.getInstance().getAppDate().getYear(),TimeController.getInstance().getAppDate().getMonth(),i);
+            LocalDate testDay = LocalDate.of(BookingController.getInstance().getAppDate().getYear(), BookingController.getInstance().getAppDate().getMonth(),i);
             for (Booking booking : bookedPerRoom) {
                 if ((testDay.isAfter(booking.getCheckIn()) || testDay.isEqual(booking.getCheckIn())) && (testDay.isBefore(booking.getCheckOut().minusDays(1)) || testDay.isEqual(booking.getCheckOut().minusDays(1)))) {
                     map.put(i, booking);
@@ -116,9 +113,9 @@ public class PlannerFXMLController implements Initializable {
     }
 
     private boolean dateSelectorCheck(int day){
-        LocalDate dayDate = LocalDate.of(TimeController.getInstance().getAppDate().getYear(),TimeController.getInstance().getAppDate().getMonth(),day);
-        LocalDate dateA = TimeController.getInstance().getCheckInSelector();
-        LocalDate dateB = TimeController.getInstance().getCheckOutSelector();
+        LocalDate dayDate = LocalDate.of(BookingController.getInstance().getAppDate().getYear(), BookingController.getInstance().getAppDate().getMonth(),day);
+        LocalDate dateA = BookingController.getInstance().getCheckInSelector();
+        LocalDate dateB = BookingController.getInstance().getCheckOutSelector();
         if(dateA != null && dateB != null){
             if ((dayDate.isAfter(dateA) || dayDate.isEqual(dateA)) && (dayDate.isBefore(dateB.minusDays(1)) || dayDate.isEqual(dateB.minusDays(1)))){
                 return true;
@@ -128,11 +125,11 @@ public class PlannerFXMLController implements Initializable {
     }
 
     private void dateSelectorInitialize(){
-        dateSelector.setValue(TimeController.getInstance().getAppDate());
+        dateSelector.setValue(BookingController.getInstance().getAppDate());
         dateSelector.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                TimeController.getInstance().setAppDate(dateSelector.getValue());
+                BookingController.getInstance().setAppDate(dateSelector.getValue());
             }
         });
         refreshList();
@@ -141,15 +138,15 @@ public class PlannerFXMLController implements Initializable {
     //BUTTONS ACTIONS
     @FXML
     public void onButtonNext(){
-        TimeController.getInstance().setAppDate(TimeController.getInstance().getAppDate().plusMonths(1));
-        dateSelector.setValue(TimeController.getInstance().getAppDate());
+        BookingController.getInstance().setAppDate(BookingController.getInstance().getAppDate().plusMonths(1));
+        dateSelector.setValue(BookingController.getInstance().getAppDate());
         refreshList();
     }
 
     @FXML
     public void onButtonPrevious(){
-        TimeController.getInstance().setAppDate(TimeController.getInstance().getAppDate().minusMonths(1));
-        dateSelector.setValue(TimeController.getInstance().getAppDate());
+        BookingController.getInstance().setAppDate(BookingController.getInstance().getAppDate().minusMonths(1));
+        dateSelector.setValue(BookingController.getInstance().getAppDate());
         refreshList();
     }
 

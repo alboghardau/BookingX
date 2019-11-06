@@ -1,7 +1,7 @@
 package FXMLControllers;
 
 import controllers.SQLiteController;
-import controllers.TimeController;
+import controllers.BookingController;
 import helpers.WindowViewHelper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -43,11 +43,11 @@ public class EditBookingModalController implements Initializable {
 
     @FXML
     public void initialize(URL url, ResourceBundle rb){
-        dateCheckInPicker.setValue(TimeController.getInstance().getCheckInSelector());
+        dateCheckInPicker.setValue(BookingController.getInstance().getCheckInSelector());
         WindowViewHelper.disableDatePicker(dateCheckInPicker);
-        dateCheckOutPicker.setValue(TimeController.getInstance().getCheckOutSelector());
+        dateCheckOutPicker.setValue(BookingController.getInstance().getCheckOutSelector());
         WindowViewHelper.disableDatePicker(dateCheckOutPicker);
-        textFieldRoom.setText(TimeController.getInstance().getSelectedRoom().getName());
+        textFieldRoom.setText(BookingController.getInstance().getSelectedRoom().getName());
         textFieldRoom.setEditable(false);
     }
 
@@ -88,14 +88,14 @@ public class EditBookingModalController implements Initializable {
         );
         Booking booking = new Booking(0,
                 guest,
-                TimeController.getInstance().getSelectedRoom(),
+                BookingController.getInstance().getSelectedRoom(),
                 Integer.parseInt(textFieldPersons.getText()),
-                TimeController.getInstance().getCheckInSelector(),
-                TimeController.getInstance().getCheckOutSelector(),
+                BookingController.getInstance().getCheckInSelector(),
+                BookingController.getInstance().getCheckOutSelector(),
                 Double.parseDouble(textFieldPrice.getText()));
-        SQLiteController.getInstance().addBooking(booking,guest,TimeController.getInstance().getSelectedRoom());
+        SQLiteController.getInstance().addBooking(booking,guest, BookingController.getInstance().getSelectedRoom());
         buttonAdd.getScene().getWindow().hide();
-        TimeController.getInstance().resetDates();
+        BookingController.getInstance().resetDates();
     }
 
     @FXML
