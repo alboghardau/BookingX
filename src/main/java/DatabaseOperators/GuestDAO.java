@@ -1,6 +1,5 @@
 package DatabaseOperators;
 
-import javafx.scene.Parent;
 import models.Guest;
 
 import java.sql.Connection;
@@ -30,8 +29,8 @@ public class GuestDAO {
             while (set.next()){
                 Guest g = new Guest(
                         set.getInt("id"),
-                        set.getString("name"),
-                        set.getString("familyName"),
+                        set.getString("firstName"),
+                        set.getString("lastName"),
                         set.getString("telephone"),
                         set.getString("email")
                 );
@@ -48,9 +47,9 @@ public class GuestDAO {
     //add guest to the table
     public void addGuest(Guest guest){
         try{
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO guests (name,familyName,telephone,email) VALUES (?,?,?,?)");
-            statement.setString(1,guest.getName());
-            statement.setString(2,guest.getFamilyName());
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO guests (firstName,lastName,telephone,email) VALUES (?,?,?,?)");
+            statement.setString(1,guest.getFirstName());
+            statement.setString(2,guest.getLastName());
             statement.setString(3,guest.getTelephone());
             statement.setString(4,guest.getEmail());
             statement.executeUpdate();
@@ -80,5 +79,18 @@ public class GuestDAO {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    //returns one guest data as object
+    public Guest oneGuest(int id){
+        try{
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM guests WHERE id = ?");
+            statement.setInt(1,id);
+            ResultSet set = statement.executeQuery();
+            return null;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }

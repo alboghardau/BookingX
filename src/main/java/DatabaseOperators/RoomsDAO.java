@@ -73,4 +73,18 @@ public class RoomsDAO {
             e.printStackTrace();
         }
     }
+
+    //returns one room from table as object
+    public Room oneRoom(int id){
+        try{
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM rooms WHERE id = ?");
+            statement.setInt(1,id);
+            ResultSet set = statement.executeQuery();
+            Room room = new Room(set.getInt("id"),set.getString("name"));
+            return room;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

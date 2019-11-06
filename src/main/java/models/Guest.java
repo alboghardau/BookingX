@@ -3,15 +3,15 @@ package models;
 public class Guest {
 
     private int id;
-    private String name;
-    private String familyName;
+    private String firstName;
+    private String lastName;
     private String telephone;
     private String email;
 
-    public Guest(int id, String name, String familyName, String telephone, String email) {
+    public Guest(int id, String firstName, String lastName, String telephone, String email) {
         this.id = id;
-        this.name = name;
-        this.familyName = familyName;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.telephone = telephone;
         this.email = email;
     }
@@ -20,24 +20,24 @@ public class Guest {
         return telephone;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setFamilyName(String familyName) {
-        this.familyName = familyName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getFamilyName() {
-        return familyName;
+    public String getLastName() {
+        return lastName;
     }
 
     public int getId() {

@@ -64,6 +64,11 @@ public class SQLiteController {
         roomsDAO.deleteRoom(room);
     }
 
+    //get on room
+    public Room oneRoom(int id){
+        return roomsDAO.oneRoom(id);
+    }
+
     //GUEST DAO HERE
     //list all guests
     public List<Guest> listGuests(){
@@ -97,6 +102,5 @@ public class SQLiteController {
         Guest newGuest = guest;
         newGuest.setId(guestDAO.lastGuestId());
         bookingDAO.addBooking(booking, newGuest, room);
-
     }
 }
